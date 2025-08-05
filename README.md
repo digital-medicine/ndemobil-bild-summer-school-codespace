@@ -1,23 +1,12 @@
-# Flutter on Codespaces
+# Pneumonia AI App
+
+The Pneumonia AI app is a sample application for the BiLD summer school. The aim of the app is to package the results of the image processing steps into a product that can be used to perform pneumonia detection based on x-ray images. As this is a Flutter project, we can run our app on multiple platforms, including mobile (iOS & Android), but also web, MacOS, and Windows.
 
 This is a template repository for developing with [Flutter](https://flutter.dev/) on the web on [GitHub Codespaces](https://github.com/features/codespaces).
 
 Flutter is a cross-platform UI framework by Google for building apps. Codespaces is a cloud-based development environment that lets you run a full-featured IDE in the cloud. This template repository lets you get started with Flutter on Codespaces in just a few clicks.
 
-**Table of Contents**
-- [Important things to note](#important-things-to-note)
-- [Setup](#setup)
-  - [Getting started](#getting-started)
-  - [Using a sample](#using-a-sample)
-- [Development Environment](#development-environment)
-  - [Developing in the browser](#developing-in-the-browser)
-  - [Developing in the desktop app](#developing-in-the-desktop-app)
-- [Flutter Development](#flutter-development)
-  - [Developing for mobile](#developing-for-mobile)
-- [Codespaces Usage](#codespaces-usage)
-  - [Managing your codespace](#managing-your-codespace)
-
-This repository is generated from the [dilanx/flutter-codespaces](https://github.com/dilanx/flutter-codespaces) repository.
+This repository is generated from the [dilanx/flutter-codespaces](https://github.com/dilanx/flutter-codespaces) repository and extended with a sample app for usage in the BiLD Summer School.
 
 ## Important things to note
 
@@ -45,37 +34,16 @@ Codespaces is not completely free. Free users have 120 core-hours per month and 
 
 7. That's it! Make changes in `lib/main.dart`, press "R" in the terminal, then refresh the page to see your changes appear quickly.
 
-### Using a sample
+8. (Advanced) If you want to, you can checkout the app and run it locally. There, you can actually run the inference model from the previous workshops in the iOS/Android simulator or even deploy to your own device. Setup Flutter on your computer following [Flutter's setup guide](https://docs.flutter.dev/get-started/install). 
 
-There are a collection of sample Flutter apps you can use. They're stored in the `samples` directory. If you want to use one of them, find the folder of the sample you want to use, then move the contents of the folder into the root of your repository. At minimum, this should overwrite `pubspec.yaml` and `lib`.
+A few additional resources to get you started if this is your first Flutter project:
 
-## Development Environment
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-### Developing in the browser
-
-The browser-based VS Code is the default editor for Codespaces, and has most of the features you'd need. Opening your codespace from [github.com/codespaces](https://github.com/codespaces) will automatically open the browser-based editor.
-
-### Developing in the desktop app
-
-If you'd prefer to use the desktop app version of VS Code, you can follow these instructions:
-
-1. Download the [VS Code desktop app](https://code.visualstudio.com/). You probably already have it if you chose to follow these instructions.
-
-2. Install the [GitHub Codespaces extension](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces).
-
-3. Open the command pallette from the View menu (or cmd+shift+P / ctrl+shift+P) and run "Codespaces: Connect to Codespace...".
-
-    > Alternatively, click the button in the very bottom left of VS Code (it says "Open a Remote Window" if you hover over it) and press "Connect to Codespace...".
-
-4. Log in if necessary, then select your codespace from the list.
-
-## Flutter Development
-
-### Developing for mobile
-
-Running Flutter in Codespaces makes it a bit difficult to run the app in a mobile simulator. However, developing for the web is basically the same as developing for mobile. I'd recommend opening your browser's developer tools and selecting a mobile device to emulate.
-
-If you're using Chrome or another Chromium-based browser, you can open DevTools like [this](https://developer.chrome.com/docs/devtools/open/) and emulate a device like [this](https://developer.chrome.com/docs/devtools/device-mode/). It'll be pretty similar for other browsers like Safari and Firefox.
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
 
 ## Codespaces Usage
 
@@ -84,3 +52,50 @@ If you're using Chrome or another Chromium-based browser, you can open DevTools 
 When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace".
 
 Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
+
+## Project Structure
+
+This repository has several folders on the top level, of which most of them do not need to be touched for this exercise. They contain the auto-generated, platform-specific code for our different targets. For our session, we need the following folders/files:
+
+- lib
+    - screens
+        - home_screen.dart # Contains the home view of our app
+        - results_screen.dart # Contains the view that handles displaying the results of our classification
+    - services
+        - classifier.dart # Handles in- and output of the classification task - in our case, through tflite_service.dart
+        - tflite_service.dart # Handles model loading and data processing related to our tflite model for classification
+    - widgets
+        - image_preview.dart # Handles displaying our x-ray images
+    main.dart # The entry point into our app
+pubspec.yaml # Handles configurations of our app, including additional Flutter packages that we might need
+
+Feel free to also explore the other files, but please do not modify them ;)
+
+## Our Tasks 
+
+In its initial state, this repository contains a rough app structure. During the session, we will extend the app with the following features:
+
+1. Display a basic UI:
+We will add new UI elements to our still empty-looking app: AppBar, Image upload area, Classification Button.
+
+2. Add Image Picker (Plugins & Async):
+We will implement a function to let users upload images from their gallery and show it in our UI.
+
+3. Add a second screen for the classification result
+We will add navigation to a second screen, that we will then use to show the X-ray image and our classification result. 
+
+4. Run the classification on-device:
+We will use the tflite_service to run our selected image through the pneumonia that was previously created in the classification session (densenet121). To enable compatibility with flutter, we converted the trained model into .tflite format.
+
+5. Display the classification result:
+We will display the result in our result_screen, including the probability and the result (Pneumonia likely/unlikely).
+
+Optional tasks:
+- (Easy) Add a loading indicator while inference runs (CircularProgressIndicator)
+- (Easy) Highlight confidence thresholds visually (color coding)
+- (Easy) Cutomize the app theme to give your app a unique appearance (see Theme definition in main.dart)
+- (Advanced) Store image + result history in local storage
+- (Advanced) Add go_router navigation to a history/details page
+- (Hard) Retrain Pneumonia Detection on a tflite-compatible model and add it into the app. You can also draw bounding boxes.
+
+- ... come up with other helpful features ;) 
