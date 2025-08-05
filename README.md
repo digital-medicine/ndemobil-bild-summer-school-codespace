@@ -73,9 +73,7 @@ Feel free to also explore the other files, but please do not modify them ;)
 
 ## Our Tasks 
 
-![Home View](assets/images/screenshot_home.png)
-![Home View with image selected](assets/images/screenshot_home_selected.png)
-![Results View](assets/images/screenshot_result.png)
+![Home View](assets/images/screenshot_home.png) ![Home View with image selected](assets/images/screenshot_home_selected.png) ![Results View](assets/images/screenshot_result.png)
 
 In its initial state, this repository contains a rough app structure. During the session, we will extend the app with the following features:
 
