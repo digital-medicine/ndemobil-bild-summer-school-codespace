@@ -23,84 +23,31 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(source: source, maxWidth: 600);
-    if (pickedFile != null) {
-      if (kIsWeb) {
-        final bytes = await pickedFile.readAsBytes();
-        setState(() {
-          _selectedImage = bytes;
-        });
-      } else {
-        setState(() {
-          _selectedImage = File(pickedFile.path);
-        });
-      }
-    }
+    // Task 2:
+    // Use the ImagePicker to select an image from the camera or gallery
+    // If the platform is web, read the image as bytes and store it in _selectedImage
+    // If the platform is mobile, store the File in _selectedImage
+    // Make sure to check if the picked file is not null before proceeding
+    // Call this function from the respective UI button
+    // Hint: make sure to use setState to update the UI after picking the image
   }
 
   Future<void> _classifyImage() async {
-    if (_selectedImage == null) return;
-
-    final result = await Classifier.classify(_selectedImage!);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) =>
-            ResultScreen(image: _selectedImage!, result: result),
-      ),
-    ).then((context) {
-      setState(() {
-        _selectedImage = null; // Reset image after classification
-      });
-    });
+    // Task 3:
+    // Call the Classifier class to run inference on the selected image (it will return a mock string for now)
+    // Navigate to the ResultScreen with the image and result using Navigator.push
+    // Reset the selected image after classification to prepare for the next one (you can do this in the then callback of Navigator.push)
+    // Hint: you might want to check if _selectedImage is null before classifying
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Pneumonia Detection',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            Text(
-              'Select an image to classify pneumonia:',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 20),
-            ImagePreview(image: _selectedImage),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () => _pickImage(ImageSource.camera),
-                  icon: const Icon(Icons.camera_alt),
-                  label: const Text('Camera'),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () => _pickImage(ImageSource.gallery),
-                  icon: const Icon(Icons.image),
-                  label: const Text('Gallery'),
-                ),
-              ],
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _selectedImage == null ? null : _classifyImage,
-                child: const Text('Classify'),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    // Task 1:
+    // Build the UI with an AppBar, a Text widget to prompt the user, and
+    // an ImagePreview widget to show the selected image
+    // Add one button for selecting an image from the gallery (ImageSource.gallery)
+    // Add a button to trigger the classification process (call _classifyImage)
+    // Use a Column to arrange the widgets vertically
+    return Scaffold();
   }
 }

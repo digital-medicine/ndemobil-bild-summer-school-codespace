@@ -82,10 +82,10 @@ We will add new UI elements to our still empty-looking app: AppBar, Image upload
 We will implement a function to let users upload images from their gallery and show it in our UI.
 
 3. Add a second screen for the classification result
-We will add navigation to a second screen, that we will then use to show the X-ray image and our classification result. 
+We will add navigation to a second screen, that we will then use to show the X-ray image and our classification result. On returning to the home screen, the home screen should be reset to be prepared for the next classification.
 
 4. Run the classification on-device:
-We will use the tflite_service to run our selected image through the pneumonia that was previously created in the classification session (densenet121). To enable compatibility with flutter, we converted the trained model into .tflite format.
+We will use the tflite_service to run our selected image through the pneumonia that was previously created in the classification session (densenet121). To enable compatibility with flutter, we converted the trained model into .tflite format. In the web, this does not work due to missing tflite support. There, we use a mock service to return the same results as we would get through the real model. 
 
 5. Display the classification result:
 We will display the result in our result_screen, including the probability and the result (Pneumonia likely/unlikely).

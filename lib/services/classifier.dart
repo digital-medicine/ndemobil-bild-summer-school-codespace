@@ -18,17 +18,11 @@ class Classifier {
   static Future<String> classify(dynamic image) async {
     await initialize();
 
-    final output = _inferenceService.run(image); // Returns List<double>
-    final rawOutput = output[0]; // Model returns raw logits
+    // Task 4:
+    // Call the inference service to run the model on the image
+    // Convert the raw logits to a probability using the sigmoid function from dart:math
+    // Return a string indicating the result, e.g. "Pneumonia likely (75.23%)" or "No pneumonia detected (85.67%)"
 
-    // Calculate probability using sigmoid function
-    double sigmoid(double x) => 1 / (1 + math.exp(-x));
-    final probability = sigmoid(rawOutput);
-
-    print('Raw: $rawOutput → Probability: $probability');
-
-    return probability > 0.5
-        ? 'Pneumonia likely (${(probability * 100).toStringAsFixed(2)}%)'
-        : 'No pneumonia detected (${((1 - probability) * 100).toStringAsFixed(2)}%)';
+    return "TBD"; // Placeholder for the actual implementation
   }
 }
