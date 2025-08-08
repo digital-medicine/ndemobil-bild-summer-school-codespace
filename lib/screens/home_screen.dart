@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Pneumonia Detection',
+          'Effusion Classification',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Text(
-              'Select an image to classify pneumonia:',
+              'Select an image to classify effusion:',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 20),

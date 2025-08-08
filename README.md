@@ -1,6 +1,6 @@
 # Pneumonia AI App
 
-The Pneumonia AI app is a sample application for the BiLD summer school. The aim of the app is to package the results of the image processing steps into a product that can be used to perform pneumonia detection based on x-ray images. As this is a Flutter project, we can run our app on multiple platforms, including mobile (iOS & Android), but also web, MacOS, and Windows.
+The Pneumonia AI app is a sample application for the BiLD summer school. The aim of the app is to package the results of the image processing steps into a product that can be used to perform effusion classification based on x-ray images. As this is a Flutter project, we can run our app on multiple platforms, including mobile (iOS & Android), but also web, MacOS, and Windows.
 
 This is a template repository for developing with [Flutter](https://flutter.dev/) on the web on [GitHub Codespaces](https://github.com/features/codespaces).
 
@@ -11,6 +11,10 @@ This repository is generated from the [dilanx/flutter-codespaces](https://github
 ## Important things to note
 
 Codespaces is not completely free. Free users have 120 core-hours per month and Pro users have 180 core-hours per month. The default codespace runs on a 2-core machine, so that's 60 hours (or 90 hours) of free usage per month before getting charged. Make sure to stop your codespace when you're not using it (it automatically stops after 30 minutes of inactivity by default). See more pricing details [here](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces), and manage your active codespaces [here](https://github.com/codespaces).
+
+> **_NOTE:_** ⚠️ When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace". This is **IMPORTANT** to avoid billing after the summer school!
+
+Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
 
 ## Setup
 
@@ -45,14 +49,6 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## Codespaces Usage
-
-### Managing your codespace
-
-When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace".
-
-Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
-
 ## Project Structure
 
 This repository has several folders on the top level, of which most of them do not need to be touched for this exercise. They contain the auto-generated, platform-specific code for our different targets. For our session, we need the following folders/files:
@@ -73,6 +69,8 @@ Feel free to also explore the other files, but please do not modify them ;)
 
 ## Our Tasks 
 
+<img src="assets/images/screenshot_home.png" width="200"><img src="assets/images/screenshot_home_selected.png" width="200"><img src="assets/images/screenshot_result.png" width="200">
+
 In its initial state, this repository contains a rough app structure. During the session, we will extend the app with the following features:
 
 1. Display a basic UI:
@@ -82,10 +80,10 @@ We will add new UI elements to our still empty-looking app: AppBar, Image upload
 We will implement a function to let users upload images from their gallery and show it in our UI.
 
 3. Add a second screen for the classification result
-We will add navigation to a second screen, that we will then use to show the X-ray image and our classification result. 
+We will add navigation to a second screen, that we will then use to show the X-ray image and our classification result. On returning to the home screen, the home screen should be reset to be prepared for the next classification.
 
 4. Run the classification on-device:
-We will use the tflite_service to run our selected image through the pneumonia that was previously created in the classification session (densenet121). To enable compatibility with flutter, we converted the trained model into .tflite format.
+We will use the tflite_service to run our selected image through the pneumonia that was previously created in the classification session (densenet121). To enable compatibility with flutter, we converted the trained model into .tflite format. In the web, this does not work due to missing tflite support. There, we use a mock service to return the same results as we would get through the real model. 
 
 5. Display the classification result:
 We will display the result in our result_screen, including the probability and the result (Pneumonia likely/unlikely).

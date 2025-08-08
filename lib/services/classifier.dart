@@ -28,7 +28,7 @@ class Classifier {
     print('Raw: $rawOutput → Probability: $probability');
 
     return probability > 0.5
-        ? 'Pneumonia likely (${(probability * 100).toStringAsFixed(2)}%)'
-        : 'No pneumonia detected (${((1 - probability) * 100).toStringAsFixed(2)}%)';
+        ? 'Effusion likely (${(probability * 100).toStringAsFixed(2)}%)'
+        : 'No effusion detected (${((1 - probability) * 100).toStringAsFixed(2)}%)';
   }
 }
