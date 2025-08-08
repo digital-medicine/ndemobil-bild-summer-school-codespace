@@ -1,6 +1,6 @@
 # Pneumonia AI App
 
-The Pneumonia AI app is a sample application for the BiLD summer school. The aim of the app is to package the results of the image processing steps into a product that can be used to perform pneumonia detection based on x-ray images. As this is a Flutter project, we can run our app on multiple platforms, including mobile (iOS & Android), but also web, MacOS, and Windows.
+The Pneumonia AI app is a sample application for the BiLD summer school. The aim of the app is to package the results of the image processing steps into a product that can be used to perform effusion classification based on x-ray images. As this is a Flutter project, we can run our app on multiple platforms, including mobile (iOS & Android), but also web, MacOS, and Windows.
 
 This is a template repository for developing with [Flutter](https://flutter.dev/) on the web on [GitHub Codespaces](https://github.com/features/codespaces).
 
@@ -11,6 +11,10 @@ This repository is generated from the [dilanx/flutter-codespaces](https://github
 ## Important things to note
 
 Codespaces is not completely free. Free users have 120 core-hours per month and Pro users have 180 core-hours per month. The default codespace runs on a 2-core machine, so that's 60 hours (or 90 hours) of free usage per month before getting charged. Make sure to stop your codespace when you're not using it (it automatically stops after 30 minutes of inactivity by default). See more pricing details [here](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces), and manage your active codespaces [here](https://github.com/codespaces).
+
+> **_NOTE:_** ⚠️ When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace". This is **IMPORTANT** to avoid billing after the summer school!
+
+Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
 
 ## Setup
 
@@ -44,14 +48,6 @@ A few additional resources to get you started if this is your first Flutter proj
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## Codespaces Usage
-
-### Managing your codespace
-
-When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace".
-
-Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
 
 ## Project Structure
 
