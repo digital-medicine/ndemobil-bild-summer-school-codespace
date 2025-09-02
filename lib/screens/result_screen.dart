@@ -10,23 +10,10 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Classification Result')),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              ImagePreview(image: image),
-              const SizedBox(height: 24),
-              Text(
-                result,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
+      // Task 5:
+      // Add an AppBar with a title
+      // Display the ImagePreview of the image that we passed to this screen
+      // Display the classification result in a Text widget
     );
   }
 }
